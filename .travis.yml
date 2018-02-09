@@ -1,0 +1,30 @@
+dist: trusty
+sudo: false
+
+language: node_js
+node_js:
+  - "node"
+  
+addons:
+  apt:
+    sources:
+      - google-chrome
+    packages:
+      - google-chrome-stable
+
+cache:
+  yarn: true
+  directories:
+    - node_modules
+    - "$HOME/.npm"
+    - "$HOME/.cache"
+branches:
+  only:
+    - master
+
+script:
+  - echo asdsadsdasd
+  - node test.js
+  - export CHROME_BIN=chromium-browser
+  - yarn build
+  - xvfb-run -a yarn test
